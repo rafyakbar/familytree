@@ -1,0 +1,66 @@
+<?php
+
+return [
+    'all_teams'     => 'Semua tim',
+    'cancel'        => 'Batal',
+    'couples'       => 'Pasangan',
+    'create'        => 'Buat tim',
+    'delete'        => 'Hapus tim',
+    'description'   => 'Deskripsi',
+    'id'            => 'ID',
+    'manage'        => 'Kelola tim',
+    'name'          => 'Nama',
+    'owner'         => 'Pemilik',
+    'persons'       => 'Orang-orang',
+    'settings'      => 'Pengaturan tim',
+    'switch'        => 'Beralih tim',
+    'team'          => 'Tim',
+    'team_personal' => 'Tim pribadi',
+    'teams'         => 'Tim-tim',
+    'users'         => 'Pengguna',
+
+    // Pesan
+    'team_details'    => 'Detail Tim',
+    'team_create_new' => 'Buat tim baru untuk berkolaborasi dengan orang lain.',
+
+    'team_name'               => 'Nama Tim',
+    'team_information'        => 'Nama tim dan informasi pemilik.',
+    'team_add_member'         => 'Tambah Anggota Tim',
+    'team_add_member_message' => 'Tambahkan anggota tim baru ke tim Anda, memungkinkan mereka untuk berkolaborasi dengan Anda.',
+    'team_provide_email'      => 'Silakan berikan alamat email pengguna baru yang ingin Anda tambahkan ke tim ini.',
+    'team_provide_role'       => 'Kemudian pilih peran untuk pengguna baru.',
+    'email'                   => 'Email',
+    'role'                    => 'Peran',
+
+    'team_pending'         => 'Undangan Tim yang Tertunda',
+    'team_pending_message' => 'Orang-orang ini telah diundang ke tim Anda dan telah dikirimkan email undangan. Mereka dapat bergabung dengan tim dengan menerima undangan email tersebut.',
+
+    'change_role'          => 'Ubah peran',
+    'team_members'         => 'Anggota tim',
+    'team_members_message' => 'Semua orang yang merupakan bagian dari tim ini.',
+    'manage_role'          => 'Kelola peran',
+    'leave'                => 'Keluar',
+    'leave_team'           => 'Keluar dari tim',
+    'leave_team_sure'      => 'Apakah Anda yakin ingin keluar dari tim ini?',
+    'remove'               => 'Hapus',
+    'remove_member'        => 'Hapus anggota tim',
+    'remove_member_sure'   => 'Apakah Anda yakin ingin menghapus orang ini dari tim?',
+    'send_email'           => 'Kirim email',
+
+    'user_not_found'       => 'Kami tidak dapat menemukan pengguna terdaftar dengan alamat email ini.',
+    'user_already_in_team' => 'Pengguna ini sudah menjadi anggota tim.',
+    'user_already_invited' => 'Pengguna ini sudah diundang ke tim.',
+    'user_not_leave'       => 'Anda tidak dapat keluar dari tim yang Anda buat.',
+
+    'delete_team_message' => 'Hapus tim ini secara permanen.',
+    'delete_team_text'     => 'Setelah sebuah tim dihapus, semua sumber daya dan data yang terkait dengan tim tersebut akan dihapus secara permanen. Sebelum menghapus tim ini, silakan unduh data atau informasi tentang tim ini yang ingin Anda simpan.',
+    'delete_team_sure'     => 'Apakah Anda yakin ingin menghapus tim ini? Setelah tim dihapus, semua sumber daya dan data yang terkait akan dihapus secara permanen.',
+
+    'been_invited'               => 'Anda diundang untuk bergabung dengan tim :team!',
+    'no_account'                 => 'Jika Anda tidak memiliki akun, Anda dapat membuat satu dengan mengklik tombol di bawah ini. Setelah membuat akun, Anda dapat mengklik tombol penerimaan undangan di email ini untuk menerima undangan tim:',
+    'create_account'             => 'Buat Akun',
+    'may_accept_already_account' => 'Jika Anda sudah memiliki akun, Anda dapat menerima undangan ini dengan mengklik tombol di bawah:',
+    'may_accept'                 => 'Anda dapat menerima undangan ini dengan mengklik tombol di bawah:',
+    'accept_invitation'          => 'Terima Undangan',
+    'discard'                    => 'Jika Anda tidak mengharapkan menerima undangan ke tim ini, Anda dapat mengabaikan email ini.',
+];
