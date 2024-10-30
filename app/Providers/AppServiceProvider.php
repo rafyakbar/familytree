@@ -143,9 +143,9 @@ class AppServiceProvider extends ServiceProvider
         // about
         // -----------------------------------------------------------------------
         AboutCommand::add('Application', [
-            'Name'    => 'Genealogy',
-            'author'  => 'kreaweb.be',
-            'github'  => 'https://github.com/MGeurts/genealogy',
+            'Name'    => 'FamilyTree',
+            'author'  => 'RafyRezky',
+            'github'  => 'https://github.com/rafyakbar/familytree',
             'license' => 'MIT License',
         ]);
         // -----------------------------------------------------------------------

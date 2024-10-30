@@ -23,7 +23,7 @@
                         @endforeach
                     @else
                         {{ __('auth.guest') }}
-                        
+
                         <x-hr.narrow class="w-full h-1 my-1 bg-gray-100 border-0 rounded max-md:mx-auto dark:bg-gray-700" />
                     @endauth
                 </div>
@@ -180,10 +180,10 @@
         <div class="flex items-center text-xs">
             <div class="px-2 text-right">
                 {{ __('app.design_development') }}<br />
-                {{ __('app.by') }} <x-link href="https://www.kreaweb.be/" target="_blank">KREAWEB</x-link>
+                {{ __('app.by') }} <x-link href="https://bertemu.id/" target="_blank">Bertemu</x-link>
             </div>
 
-            <a href="https://www.kreaweb.be/" target="_blank" title="Kreaweb">
+            <a href="https://bertemu.id/" target="_blank" title="Bertemu">
                 <x-svg.kreaweb class="size-11 dark:fill-white hover:fill-primary-300 dark:hover:fill-primary-300" alt="kreaweb" />
             </a>
         </div>
