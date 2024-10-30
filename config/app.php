@@ -82,8 +82,9 @@ return [
 
     // add all available translations here, after providing the needed translation files in /lang/XX/
     'available_locales' => [
+    	'Indonesia'  => 'id',
+    	'English'    => 'en',               // English
         'Deutsch'    => 'de',               // German
-        'English'    => 'en',               // English
         'Español'    => 'es',               // Spanish
         'Français'   => 'fr',               // French
         'Nederlands' => 'nl',               // Dutch
