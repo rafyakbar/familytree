@@ -158,10 +158,10 @@ class AppServiceProvider extends ServiceProvider
     private function addAboutCommandDetails(): void
     {
         AboutCommand::add('Application', [
-            'Name'    => 'Genealogy',
-            'Author'  => 'kreaweb.be',
-            'GitHub'  => 'https://github.com/MGeurts/genealogy',
-            'License' => 'MIT License',
+            'Name'    => 'FamilyTree',
+            'author'  => 'RafyRezky',
+            'github'  => 'https://github.com/rafyakbar/familytree',
+            'license' => 'MIT License',
         ]);
     }
 

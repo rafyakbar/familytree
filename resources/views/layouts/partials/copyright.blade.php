@@ -3,8 +3,8 @@
     <div class="text-left">
         <p>
             Copyright © {{ date('Y') }} |
-            <x-link href="https://www.kreaweb.be/" target="_blank" aria-label="Visit Kreaweb website">
-                KREAWEB
+            <x-link href="https://bertemu.id/" target="_blank" aria-label="Visit Bertemu website">
+                Bertemu
             </x-link>.
         </p>
         <p>
@@ -20,15 +20,15 @@
             <p>
                 {{ __('app.design_development') }}<br />
                 {{ __('app.by') }}
-                <x-link href="https://www.kreaweb.be/" target="_blank" aria-label="Visit Kreaweb website">
-                    KREAWEB
+                <x-link href="https://bertemu.id/" target="_blank" aria-label="Visit Bertemu website">
+                    Bertemu
                 </x-link>
             </p>
         </div>
 
-        <!-- Kreaweb Logo -->
-        <a href="https://www.kreaweb.be/" target="_blank" title="Kreaweb" aria-label="Visit Kreaweb website">
-            <x-svg.kreaweb class="size-11 dark:fill-white hover:fill-primary-300 dark:hover:fill-primary-300" alt="Kreaweb Logo" />
+        <!-- Bertemu Logo -->
+        <a href="https://bertemu.id/" target="_blank" title="Bertemu" aria-label="Visit Bertemu website">
+            <x-svg.Bertemu class="size-11 dark:fill-white hover:fill-primary-300 dark:hover:fill-primary-300" alt="Bertemu Logo" />
         </a>
     </div>
 </div>
