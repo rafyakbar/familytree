@@ -84,8 +84,9 @@ return [
     // possible languages: see XX in \vendor\stefangabos\world_countries\data\countries\XX\
     // ONLY LANGUAGES from \vendor\stefangabos\world_countries\ CAN BE ACCEPTED !!
     'available_locales' => [
-        'Deutsch'    => 'de',
+        'Indonesia'  => 'id',
         'English'    => 'en',
+        'Deutsch'    => 'de',
         'Nederlands' => 'nl',
         'Việt Nam'   => 'vi',
     ],
