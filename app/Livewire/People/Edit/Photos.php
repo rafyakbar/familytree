@@ -121,6 +121,14 @@ class Photos extends Component
     public function save()
     {
         if ($this->uploads) {
+            foreach ($this->uploads as $upload) {
+                if (! in_array($upload->getClientOriginalExtension(), ['jpeg', 'jpg', 'gif', 'png', 'svg', 'webp'])) {
+                    $this->toast()->error(__('app.whoops'))->send();
+
+                    return;
+                }
+            }
+
             PersonPhotos::save($this->person, $this->uploads);
 
             $this->toast()->success(__('app.save'), trans_choice('person.photos_saved', count($this->uploads)))->send();
