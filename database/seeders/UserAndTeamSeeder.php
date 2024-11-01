@@ -18,9 +18,9 @@ class UserAndTeamSeeder extends Seeder
         $developer = User::factory([
             'firstname'    => '_',
             'surname'      => 'Developer',
-            'email'        => 'developer@genealogy.test',
+            'email'        => 'developer@familytree.bertemu.id',
             'is_developer' => true,
-            'timezone'     => 'Europe/Brussels',
+            'timezone'     => 'Asia/Jakarta',
         ])
             ->withPersonalTeam()
             ->create();
@@ -35,7 +35,7 @@ class UserAndTeamSeeder extends Seeder
         $administrator = User::factory([
             'firstname' => '_',
             'surname'   => 'Administrator',
-            'email'     => 'administrator@genealogy.test',
+            'email'     => 'administrator@familytree.bertemu.id',
         ])
             ->withPersonalTeam()
             ->create();
@@ -47,8 +47,8 @@ class UserAndTeamSeeder extends Seeder
         // -----------------------------------------------------------------------------------
         // create demo teams (owned by administrator)
         // -----------------------------------------------------------------------------------
-        $team_british_royals = $this->createTeamBig('administrator@genealogy.test', 'BRITISH ROYALS', 'Part of the British Royal family around Queen Elizabeth II');
-        $team_kennedy        = $this->createTeamBig('administrator@genealogy.test', 'KENNEDY', 'Part of the Kennedy family around former US President John Fitzgerald Kennedy');
+        $team_british_royals = $this->createTeamBig('administrator@familytree.bertemu.id', 'BRITISH ROYALS', 'Part of the British Royal family around Queen Elizabeth II');
+        $team_kennedy        = $this->createTeamBig('administrator@familytree.bertemu.id', 'KENNEDY', 'Part of the Kennedy family around former US President John Fitzgerald Kennedy');
 
         $administrator->update([
             'current_team_id' => $team_british_royals->id,
@@ -71,7 +71,7 @@ class UserAndTeamSeeder extends Seeder
         $manager = User::factory([
             'firstname'       => '_',
             'surname'         => 'Manager',
-            'email'           => 'manager@genealogy.test',
+            'email'           => 'manager@familytree.bertemu.id',
             'current_team_id' => $team_british_royals->id,
         ])
             ->withPersonalTeam()
@@ -90,7 +90,7 @@ class UserAndTeamSeeder extends Seeder
         $editor = User::factory([
             'firstname'       => '_',
             'surname'         => 'Editor',
-            'email'           => 'editor@genealogy.test',
+            'email'           => 'editor@familytree.bertemu.id',
             'current_team_id' => $team_kennedy->id,
         ])
             ->withPersonalTeam()
@@ -113,7 +113,7 @@ class UserAndTeamSeeder extends Seeder
                 $user = User::factory([
                     'firstname'       => '__',
                     'surname'         => 'Member ' . $i,
-                    'email'           => 'member_' . $i . '@genealogy.test',
+                    'email'           => 'member_' . $i . '@familytree.bertemu.id',
                     'current_team_id' => $team_british_royals,
                 ])
                     ->withPersonalTeam()
@@ -133,7 +133,7 @@ class UserAndTeamSeeder extends Seeder
                 $user = User::factory([
                     'firstname'       => '__',
                     'surname'         => 'Member ' . $i,
-                    'email'           => 'member_' . $i . '@genealogy.test',
+                    'email'           => 'member_' . $i . '@familytree.bertemu.id',
                     'current_team_id' => $team_kennedy,
                 ])
                     ->withPersonalTeam()
@@ -153,7 +153,7 @@ class UserAndTeamSeeder extends Seeder
                 $user = User::factory([
                     'firstname' => '___',
                     'surname'   => 'Member ' . $i,
-                    'email'     => 'member_' . $i . '@genealogy.test',
+                    'email'     => 'member_' . $i . '@familytree.bertemu.id',
                 ])
                     ->withPersonalTeam()
                     ->create();
