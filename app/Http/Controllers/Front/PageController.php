@@ -23,7 +23,7 @@ class PageController extends Controller
     public function about(): View
     {
         $aboutFile = Jetstream::localizedMarkdownPath(app()->getLocale() . '/' . 'about.md');
-
+		//$aboutFile = Jetstream::localizedMarkdownPath('about-family-tree.md');
         return view('about', [
             'about' => Str::markdown(file_get_contents($aboutFile)),
         ]);

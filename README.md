@@ -78,32 +78,32 @@ This project is open-sourced software licensed under the [MIT license](LICENSE).
     </thead>
     <tbody>
         <tr>
-            <td><b>administrator@genealogy.test</b></td>
+            <td><b>administrator@familytree.bertemu.id</b></td>
             <td>password</td>
             <td>to access teams <b>BRITISH ROYALS</b> and <b>KENNEDY</b> as team <b>owner</b></td>
         </tr>
         <tr>
-            <td><b>manager@genealogy.test</b></td>
+            <td><b>manager@familytree.bertemu.id</b></td>
             <td>password</td>
             <td>to access team <b>BRITISH ROYALS</b> as <b>manager</b></td>
         </tr>
         <tr>
-            <td><b>editor@genealogy.test</b></td>
+            <td><b>editor@familytree.bertemu.id</b></td>
             <td>password</td>
             <td>to access team <b>KENNEDY</b> as <b>editor</b></td>
         </tr>
         <tr>
-            <td><b>member_1@genealogy.test</b></td>
+            <td><b>member_1@familytree.bertemu.id</b></td>
             <td>password</td>
             <td>to access team <b>BRITISH ROYALS</b> as normal <b>member</b></td>
         </tr>
         <tr>
-            <td><b>member_4@genealogy.test</b></td>
+            <td><b>member_4@familytree.bertemu.id</b></td>
             <td>password</td>
             <td>to access team <b>KENNEDY</b> as normal <b>member</b></td>
         </tr>
         <tr>
-            <td><b>developer@genealogy.test</b></td>
+            <td><b>developer@familytree.bertemu.id</b></td>
             <td>password</td>
             <td>to access options reserved for the <b>developer</b>, like the <b>user management</b> and access to <b>all persons</b> in <b>all teams</b></td>
         </tr>

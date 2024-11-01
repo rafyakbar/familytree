@@ -8,22 +8,7 @@
 
         <!-- Social Media Icons -->
         <div class="flex justify-center">
-            <a href="https://www.facebook.com/" class="mr-6" target="_blank" aria-label="Visit Facebook" title="Facebook">
-                <x-ts-icon icon="brand-facebook" class="text-neutral-900 dark:text-neutral-200" />
-            </a>
-            <a href="https://twitter.com/Kreaweb_be" class="mr-6" target="_blank" aria-label="Visit X (formerly Twitter)" title="X">
-                <x-ts-icon icon="brand-x" class="text-neutral-900 dark:text-neutral-200" />
-            </a>
-            <a href="https://www.instagram.com/" class="mr-6" target="_blank" aria-label="Visit Instagram" title="Instagram">
-                <x-ts-icon icon="brand-instagram" class="text-neutral-900 dark:text-neutral-200" />
-            </a>
-            <a href="https://www.linkedin.com/" class="mr-6" target="_blank" aria-label="Visit LinkedIn" title="LinkedIn">
-                <x-ts-icon icon="brand-linkedin" class="text-neutral-900 dark:text-neutral-200" />
-            </a>
-            <a href="https://www.youtube.com/channel/UClUVszEUeb-nY7qM00ERCHg" class="mr-6" target="_blank" aria-label="Visit YouTube" title="YouTube">
-                <x-ts-icon icon="brand-youtube" class="text-neutral-900 dark:text-neutral-200" />
-            </a>
-            <a href="https://github.com/MGeurts" class="" target="_blank" aria-label="Visit GitHub" title="GitHub">
+            <a href="https://github.com/rafyakbar/familytree" class="text-neutral-600 dark:text-neutral-200" target="_blank" title="GitHub">
                 <x-ts-icon icon="brand-github" class="text-neutral-900 dark:text-neutral-200" />
             </a>
         </div>
@@ -90,7 +75,7 @@
                         <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
                         <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
                     </svg>
-                    24051905007@mhs.unesa.ac.id
+                    24051905007@mhs.unesa.ac.id (Rafy)
                 </p>
 
                 <p class="flex items-center justify-center mb-4 md:justify-start">
@@ -98,7 +83,7 @@
                         <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
                         <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
                     </svg>
-                    24051905008@mhs.unesa.ac.id
+                    24051905008@mhs.unesa.ac.id (Rezky)
                 </p>
             </div>
         </div>
