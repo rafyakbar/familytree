@@ -100,6 +100,14 @@ class Photos extends Component
     public function save(): void
     {
         if ($this->uploads) {
+        	foreach ($this->uploads as $upload) {
+                if (! in_array($upload->getClientOriginalExtension(), ['jpeg', 'jpg', 'gif', 'png', 'svg', 'webp'])) {
+                    $this->toast()->error(__('app.whoops'))->send();
+
+                    return;
+                }
+            }
+            
             $personPhotos = new PersonPhotos($this->person);
 
             $personPhotos->save($this->uploads);
