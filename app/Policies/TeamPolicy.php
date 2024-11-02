@@ -41,7 +41,7 @@ class TeamPolicy
      */
     public function update(User $user, Team $team): bool
     {
-        return $user->ownsTeam($team);
+        return $user->ownsTeam($team) or $user->hasTeamRole($team, 'administrator');
     }
 
     /**
@@ -57,7 +57,7 @@ class TeamPolicy
      */
     public function updateTeamMember(User $user, Team $team): bool
     {
-        return $user->ownsTeam($team);
+        return $user->ownsTeam($team) or $user->hasTeamRole($team, 'administrator');
     }
 
     /**
