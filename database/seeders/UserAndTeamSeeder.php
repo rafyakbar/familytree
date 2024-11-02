@@ -34,8 +34,8 @@ class UserAndTeamSeeder extends Seeder
         // -----------------------------------------------------------------------------------
         $administrator = User::factory([
             'firstname' => '_',
-            'surname'   => 'Administrator',
-            'email'     => 'administrator@familytree.bertemu.id',
+            'surname'   => 'Owner',
+            'email'     => 'owner@familytree.bertemu.id',
         ])
             ->withPersonalTeam()
             ->create();
@@ -47,8 +47,8 @@ class UserAndTeamSeeder extends Seeder
         // -----------------------------------------------------------------------------------
         // create demo teams (owned by administrator)
         // -----------------------------------------------------------------------------------
-        $team_british_royals = $this->createTeamBig('administrator@familytree.bertemu.id', 'BRITISH ROYALS', 'Part of the British Royal family around Queen Elizabeth II');
-        $team_kennedy        = $this->createTeamBig('administrator@familytree.bertemu.id', 'KENNEDY', 'Part of the Kennedy family around former US President John Fitzgerald Kennedy');
+        $team_british_royals = $this->createTeamBig('owner@familytree.bertemu.id', 'BRITISH ROYALS', 'Part of the British Royal family around Queen Elizabeth II');
+        $team_kennedy        = $this->createTeamBig('owner@familytree.bertemu.id', 'KENNEDY', 'Part of the Kennedy family around former US President John Fitzgerald Kennedy');
 
         $administrator->update([
             'current_team_id' => $team_british_royals->id,
