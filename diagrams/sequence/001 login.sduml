@@ -1,0 +1,30 @@
+title Login Use Case Sequence Diagram
+
+actor User
+participant System
+participant Database
+
+User -> System: Display Login Page
+activate System
+
+System -> User: Show Login Form
+deactivate System
+
+User -> System: Enter Email and Password
+activate System
+
+System -> Database: Verify Login Credentials(email, password)
+activate Database
+
+alt Successful Login
+    Database --> System: Return Validation Result(isValid: true)
+    deactivate Database
+    System -> User: Login Successful
+    System -> User: Display Search Page
+else Failed Login
+    Database --> System: Return Validation Result(isValid: false)
+    deactivate Database
+    System -> User: Login Failed
+    System -> User: Display Login Page with Warning
+end
+deactivate System
