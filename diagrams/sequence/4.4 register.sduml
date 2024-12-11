@@ -1,0 +1,36 @@
+title Diagram Urutan Use Case Register
+
+actor Pengguna
+participant HalamanRegister
+participant HalamanPencarian
+participant Sistem
+database Database
+
+Pengguna -> HalamanRegister: Tampilkan Halaman Register
+activate HalamanRegister
+
+HalamanRegister -> Pengguna: Tampilkan Form Register
+deactivate HalamanRegister
+
+Pengguna -> HalamanRegister: Mengisi Form Register
+activate HalamanRegister
+
+HalamanRegister -> Sistem: Kirim Data Register
+activate Sistem
+
+Sistem -> Sistem: Validasi Data
+activate Database
+
+alt Validasi Berhasil
+    Sistem -> Database: Simpan Data Pengguna
+    Database -> Sistem: Kembalikan Data yang Telah Disimpan
+    Sistem -> HalamanPencarian: Tampilkan Halaman Pencarian
+    HalamanPencarian -> Pengguna: Tampilkan Halaman Pencarian
+else Validasi Gagal
+    Database --> Sistem: Kembalikan Hasil Validasi (false)
+    Sistem -> HalamanRegister: Tampilkan Halaman Register dengan Peringatan
+    HalamanRegister -> Pengguna: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem

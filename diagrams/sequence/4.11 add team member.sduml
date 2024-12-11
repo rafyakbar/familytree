@@ -1,0 +1,51 @@
+title Add Team Member
+
+actor Owner
+actor "Pengguna yang Diundang" as InvitedUser
+participant HalamanTeamSettings
+participant Sistem
+database Database
+
+Owner -> HalamanTeamSettings: Tampilkan Halaman Team Settings
+activate HalamanTeamSettings
+
+HalamanTeamSettings -> Owner: Tampilkan Form Tambah Anggota
+deactivate HalamanTeamSettings
+
+Owner -> HalamanTeamSettings: Mengisi Form
+activate HalamanTeamSettings
+
+HalamanTeamSettings -> Sistem: Validasi Data
+activate Sistem
+
+Sistem -> Database: Cek Data Anggota
+activate Database
+
+alt Validasi Berhasil
+    Database --> Sistem: Kembalikan Hasil Validasi (true)
+    Sistem -> Database: Simpan Data Anggota
+    Database --> Sistem: Konfirmasi Penyimpanan
+    Sistem -> HalamanTeamSettings: Kirim Email Undangan ke Pengguna yang Diundang
+    HalamanTeamSettings -> InvitedUser: Tampilkan Email Undangan
+    HalamanTeamSettings -> Owner: Tampilkan Halaman Team Settings
+else Validasi Gagal
+    Database --> Sistem: Kembalikan Hasil Validasi (false)
+    Sistem -> HalamanTeamSettings: Tampilkan Halaman Team Settings dengan Peringatan
+    HalamanTeamSettings -> Owner: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanTeamSettings
+
+InvitedUser -> InvitedUser: Buka Email
+InvitedUser -> InvitedUser: Klik "Accept Invitation"
+activate Sistem
+
+Sistem -> Database: Tambah Anggota ke Tim
+activate Database
+Database --> Sistem: Konfirmasi Penambahan Anggota
+deactivate Database
+
+Sistem -> InvitedUser: Tampilkan Halaman Search
+deactivate Sistem

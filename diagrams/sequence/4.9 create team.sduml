@@ -1,0 +1,34 @@
+title Create Team
+
+actor Pengguna
+participant HalamanCreateTeam
+participant Sistem
+database Database
+
+Pengguna -> HalamanCreateTeam: Tampilkan Halaman Create Team
+activate HalamanCreateTeam
+
+HalamanCreateTeam -> Pengguna: Tampilkan Form Create Team
+deactivate HalamanCreateTeam
+
+Pengguna -> HalamanCreateTeam: Mengisi Form
+activate HalamanCreateTeam
+
+HalamanCreateTeam -> Sistem: Validasi Data
+activate Sistem
+
+Sistem -> Sistem: Cek Data Tim
+activate Database
+
+alt Validasi Berhasil
+    Sistem -> Database: Simpan Data Tim
+    Database --> Sistem: Konfirmasi Penyimpanan
+    Sistem -> HalamanCreateTeam: Tampilkan Halaman Search
+    HalamanCreateTeam -> Pengguna: Tampilkan Halaman Search
+else Validasi Gagal
+    Sistem -> HalamanCreateTeam: Tampilkan Halaman Create Team dengan Peringatan
+    HalamanCreateTeam -> Pengguna: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem

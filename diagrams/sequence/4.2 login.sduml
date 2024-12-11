@@ -1,0 +1,35 @@
+title Login
+
+actor Pengguna
+participant HalamanLogin
+participant HalamanPencarian
+participant Sistem
+database Database
+
+Pengguna -> HalamanLogin: Tampilkan Halaman Login
+activate HalamanLogin
+
+HalamanLogin -> Pengguna: Tampilkan Form Login
+deactivate HalamanLogin
+
+Pengguna -> HalamanLogin: Masukkan Email dan Kata Sandi
+activate HalamanLogin
+
+HalamanLogin -> Sistem: Kirim Data Login(email, kata sandi)
+activate Sistem
+
+Sistem -> Database: Verifikasi Kredensial Login(email, kata sandi)
+activate Database
+
+alt Login Berhasil
+    Database --> Sistem: Kembalikan Hasil Validasi(isValid: true)
+    Sistem -> HalamanPencarian: Tampilkan Halaman Pencarian
+    HalamanPencarian -> Pengguna: Menampilkan Halaman Pencarian
+else Login Gagal
+    Database --> Sistem: Kembalikan Hasil Validasi(isValid: false)
+    Sistem -> HalamanLogin: Tampilkan Halaman Login dengan Peringatan
+    HalamanLogin -> Pengguna: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem

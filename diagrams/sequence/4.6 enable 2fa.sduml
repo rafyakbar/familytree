@@ -1,0 +1,59 @@
+title Enable Two Factor Authentication
+
+actor Pengguna
+participant HalamanUserProfile
+participant Sistem
+entity GoogleAuthenticator
+database Database
+
+Pengguna -> HalamanUserProfile: Tampilkan Halaman User Profile
+activate HalamanUserProfile
+
+HalamanUserProfile -> Pengguna: Tampilkan Popup Konfirmasi Kata Sandi
+deactivate HalamanUserProfile
+
+Pengguna -> HalamanUserProfile: Mengisi Kata Sandi
+activate HalamanUserProfile
+
+HalamanUserProfile -> Sistem: Verifikasi Kata Sandi
+activate Sistem
+
+Sistem -> Database: Cek Kata Sandi
+activate Database
+
+alt Verifikasi Berhasil
+    Database --> Sistem: Kembalikan Hasil Validasi (true)
+    Sistem -> HalamanUserProfile: Tampilkan QR Code
+    HalamanUserProfile -> Pengguna: Tampilkan QR Code
+else Verifikasi Gagal
+    Database --> Sistem: Kembalikan Hasil Validasi (false)
+    Sistem -> HalamanUserProfile: Tampilkan Halaman User Profile dengan Peringatan
+    HalamanUserProfile -> Pengguna: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem
+
+Pengguna -> GoogleAuthenticator: Scan QR Code
+activate GoogleAuthenticator
+
+GoogleAuthenticator -> GoogleAuthenticator: Simpan Informasi Autentikasi
+GoogleAuthenticator -> Pengguna: Tampilkan Kode Autentikasi
+deactivate GoogleAuthenticator
+
+Pengguna -> HalamanUserProfile: Mengisi Kode Autentikasi
+HalamanUserProfile -> Sistem: Mengirim Kode Autentikasi
+
+Sistem -> Sistem: Verifikasi Kode
+activate Sistem
+
+Sistem -> Sistem: Cek Kode Autentikasi
+
+alt Verifikasi Kode Berhasil
+    Sistem -> HalamanUserProfile: Tampilkan Halaman User Profile dengan Recovery Codes
+    HalamanUserProfile -> Pengguna: Tampilkan Recovery Codes
+else Verifikasi Kode Gagal
+    Sistem -> HalamanUserProfile: Tampilkan Halaman User Profile dengan Peringatan
+    HalamanUserProfile -> Pengguna: Tampilkan Peringatan
+end
+deactivate Sistem

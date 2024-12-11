@@ -1,0 +1,33 @@
+title Diagram Urutan Use Case Edit User's Profile
+
+actor Pengguna
+participant HalamanUserProfile
+participant Sistem
+database Database
+
+Pengguna -> HalamanUserProfile: Tampilkan Halaman User Profile
+activate HalamanUserProfile
+
+HalamanUserProfile -> Pengguna: Tampilkan Form User Profile
+deactivate HalamanUserProfile
+
+Pengguna -> HalamanUserProfile: Memperbarui Isi Form
+activate HalamanUserProfile
+
+HalamanUserProfile -> Sistem: Kirim Data Perbaruan
+activate Sistem
+activate Database
+
+Sistem -> Sistem: Validasi Data
+alt Validasi Berhasil
+    Sistem -> Database: Simpan Data Pengguna
+    Database --> Sistem: Konfirmasi Penyimpanan
+    Sistem -> HalamanUserProfile: Tampilkan Halaman User Profile
+    HalamanUserProfile -> Pengguna: Tampilkan Halaman User Profile
+else Validasi Gagal
+    Sistem -> HalamanUserProfile: Tampilkan Halaman User Profile dengan Peringatan
+    HalamanUserProfile -> Pengguna: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem

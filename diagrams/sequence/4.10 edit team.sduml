@@ -1,0 +1,34 @@
+title Edit Team
+
+actor "Owner, Administrator" as User
+participant HalamanTeamSettings
+participant Sistem
+database Database
+
+User -> HalamanTeamSettings: Tampilkan Halaman Team Settings
+activate HalamanTeamSettings
+
+HalamanTeamSettings -> User: Tampilkan Form Edit Tim
+deactivate HalamanTeamSettings
+
+User -> HalamanTeamSettings: Memperbarui Isi Form
+activate HalamanTeamSettings
+
+HalamanTeamSettings -> Sistem: Validasi Data
+activate Sistem
+
+Sistem -> Sistem: Cek Data Tim
+activate Database
+
+alt Validasi Berhasil
+    Sistem -> Database: Simpan Data Tim
+    Database --> Sistem: Konfirmasi Penyimpanan
+    Sistem -> HalamanTeamSettings: Tampilkan Halaman Team Settings
+    HalamanTeamSettings -> User: Tampilkan Halaman Team Settings
+else Validasi Gagal
+    Sistem -> HalamanTeamSettings: Tampilkan Halaman Team Settings dengan Peringatan
+    HalamanTeamSettings -> User: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem
