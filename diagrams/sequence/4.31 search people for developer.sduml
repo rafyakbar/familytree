@@ -1,0 +1,35 @@
+title Search People (For Developer)
+
+actor Developer
+participant HalamanPeople
+participant Sistem
+database Database
+
+Developer -> HalamanPeople: Tampilkan Halaman People
+activate HalamanPeople
+
+HalamanPeople -> Developer: Tampilkan Daftar People
+deactivate HalamanPeople
+
+Developer -> HalamanPeople: Memasukkan Keyword atau Filter
+activate HalamanPeople
+
+HalamanPeople -> Sistem: Melakukan Query Data
+activate Sistem
+
+Sistem -> Database: Cari People Berdasarkan Keyword/Filter
+activate Database
+
+alt Data Ditemukan
+    Database -> Sistem: Kembalikan Hasil People
+    Sistem -> HalamanPeople: Tampilkan Halaman People dengan People yang Sesuai
+    HalamanPeople -> Developer: Tampilkan Daftar People yang Ditemukan
+else Data Tidak Ditemukan
+    Database -> Sistem: Kembalikan Hasil Kosong
+    Sistem -> HalamanPeople: Tampilkan Halaman People dengan Informasi Tidak Ada Hasil
+    HalamanPeople -> Developer: Tampilkan Informasi Tidak Ada Hasil
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanPeople

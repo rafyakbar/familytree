@@ -1,0 +1,37 @@
+title Delete Person's File
+
+actor "Owner, Administrator, Manager, Editor, Developer" as User
+participant HalamanEditFiles
+participant Sistem
+database Database
+
+User -> HalamanEditFiles: Tampilkan Halaman Edit Person's Files
+activate HalamanEditFiles
+
+HalamanEditFiles -> User: Tampilkan Daftar File
+deactivate HalamanEditFiles
+
+User -> HalamanEditFiles: Memilih File untuk Dihapus
+activate HalamanEditFiles
+
+HalamanEditFiles -> Sistem: Melakukan Validasi Data
+activate Sistem
+
+Sistem -> Database: Cek Data File
+activate Database
+
+alt Validasi Berhasil
+    Database -> Sistem: Kembalikan Hasil Validasi (true)
+    Sistem -> Database: Hapus File
+    Database -> Sistem: Konfirmasi Penghapusan
+    Sistem -> HalamanEditFiles: Tampilkan Halaman Edit Person's Files
+    HalamanEditFiles -> User: Tampilkan Halaman Edit Person's Files
+else Validasi Gagal
+    Database -> Sistem: Kembalikan Hasil Validasi (false)
+    Sistem -> HalamanEditFiles: Tampilkan Halaman Edit Person's Files dengan Peringatan
+    HalamanEditFiles -> User: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanEditFiles

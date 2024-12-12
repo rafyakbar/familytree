@@ -1,0 +1,35 @@
+title Search Users
+
+actor Developer
+participant HalamanUsers
+participant Sistem
+database Database
+
+Developer -> HalamanUsers: Tampilkan Halaman Users
+activate HalamanUsers
+
+HalamanUsers -> Developer: Tampilkan Daftar Users
+deactivate HalamanUsers
+
+Developer -> HalamanUsers: Memasukkan Keyword atau Filter
+activate HalamanUsers
+
+HalamanUsers -> Sistem: Melakukan Query Data
+activate Sistem
+
+Sistem -> Database: Cari Users Berdasarkan Keyword/Filter
+activate Database
+
+alt Data Ditemukan
+    Database -> Sistem: Kembalikan Hasil Users
+    Sistem -> HalamanUsers: Tampilkan Halaman Users dengan Users yang Sesuai
+    HalamanUsers -> Developer: Tampilkan Daftar Users yang Ditemukan
+else Data Tidak Ditemukan
+    Database -> Sistem: Kembalikan Hasil Kosong
+    Sistem -> HalamanUsers: Tampilkan Halaman Users dengan Informasi Tidak Ada Hasil
+    HalamanUsers -> Developer: Tampilkan Informasi Tidak Ada Hasil
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanUsers

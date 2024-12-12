@@ -1,0 +1,37 @@
+title Disconnect Person's Relationship
+
+actor "Owner, Administrator, Manager, Editor, Developer" as User
+participant HalamanProfile
+participant Sistem
+database Database
+
+User -> HalamanProfile: Tampilkan Halaman Person's Profile
+activate HalamanProfile
+
+HalamanProfile -> User: Tampilkan Daftar Partner
+deactivate HalamanProfile
+
+User -> HalamanProfile: Memilih Partner yang Akan Dihapus
+activate HalamanProfile
+
+HalamanProfile -> Sistem: Melakukan Validasi Data
+activate Sistem
+
+Sistem -> Database: Cek Data Partner
+activate Database
+
+alt Validasi Berhasil
+    Database -> Sistem: Kembalikan Hasil Validasi (true)
+    Sistem -> Database: Hapus Partner
+    Database -> Sistem: Konfirmasi Penghapusan
+    Sistem -> HalamanProfile: Tampilkan Halaman Person's Profile
+    HalamanProfile -> User: Tampilkan Halaman Person's Profile
+else Validasi Gagal
+    Database -> Sistem: Kembalikan Hasil Validasi (false)
+    Sistem -> HalamanProfile: Tampilkan Halaman Person's Profile dengan Peringatan
+    HalamanProfile -> User: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanProfile

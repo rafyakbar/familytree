@@ -1,0 +1,38 @@
+title Delete User
+
+actor Developer
+participant HalamanUsers
+participant Sistem
+database Database
+
+entryspacing 1.0
+Developer -> HalamanUsers: Tampilkan Halaman Users
+activate HalamanUsers
+
+HalamanUsers -> Developer: Tampilkan Daftar Users
+deactivate HalamanUsers
+
+Developer -> HalamanUsers: Memilih User untuk Dihapus
+activate HalamanUsers
+
+HalamanUsers -> Sistem: Melakukan Validasi Data
+activate Sistem
+
+Sistem -> Database: Cek Data User
+activate Database
+
+alt Validasi Berhasil
+    Database -> Sistem: Kembalikan Hasil Validasi (true)
+    Sistem -> Database: Hapus User
+    Database -> Sistem: Konfirmasi Penghapusan
+    Sistem -> HalamanUsers: Tampilkan Halaman Users
+    HalamanUsers -> Developer: Tampilkan Halaman Users
+else Validasi Gagal
+    Database -> Sistem: Kembalikan Hasil Validasi (false)
+    Sistem -> HalamanUsers: Tampilkan Halaman Users
+    HalamanUsers -> Developer: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanUsers

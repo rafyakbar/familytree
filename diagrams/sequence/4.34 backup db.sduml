@@ -1,0 +1,35 @@
+title Backup Database
+
+actor Developer
+participant HalamanBackup
+participant Sistem
+database Database
+
+Developer -> HalamanBackup: Tampilkan Halaman Backup
+activate HalamanBackup
+
+HalamanBackup -> Developer: Tampilkan Opsi Backup
+deactivate HalamanBackup
+
+Developer -> HalamanBackup: Klik Backup
+activate HalamanBackup
+
+HalamanBackup -> Sistem: Melakukan Backup Database
+activate Sistem
+
+Sistem -> Database: Proses Backup
+activate Database
+
+alt Backup Berhasil
+    Database -> Sistem: Konfirmasi Backup Sukses
+    Sistem -> HalamanBackup: Tampilkan Halaman Backup
+    HalamanBackup -> Developer: Tampilkan Halaman Backup
+else Backup Gagal
+    Database -> Sistem: Konfirmasi Backup Gagal
+    Sistem -> HalamanBackup: Tampilkan Halaman Backup dengan Peringatan
+    HalamanBackup -> Developer: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanBackup
