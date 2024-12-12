@@ -21,11 +21,11 @@ Sistem -> Database: Cek Kata Sandi
 activate Database
 
 alt Verifikasi Berhasil
-    Database --> Sistem: Kembalikan Hasil Validasi (true)
+    Database -> Sistem: Kembalikan Hasil Validasi (true)
     Sistem -> HalamanUserProfile: Tampilkan Halaman User Profile dengan Recovery Codes
     HalamanUserProfile -> Pengguna: Tampilkan Recovery Codes
 else Verifikasi Gagal
-    Database --> Sistem: Kembalikan Hasil Validasi (false)
+    Database -> Sistem: Kembalikan Hasil Validasi (false)
     Sistem -> HalamanUserProfile: Tampilkan Halaman User Profile dengan Peringatan
     HalamanUserProfile -> Pengguna: Tampilkan Peringatan
 end

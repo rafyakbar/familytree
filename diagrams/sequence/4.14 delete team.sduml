@@ -1,0 +1,37 @@
+title Delete Team
+
+actor Owner
+participant HalamanTeamSettings
+participant Sistem
+database Database
+
+Owner -> HalamanTeamSettings: Tampilkan Halaman Team Settings dengan Konfirmasi
+activate HalamanTeamSettings
+
+HalamanTeamSettings -> Owner: Tampilkan Konfirmasi Hapus Tim
+deactivate HalamanTeamSettings
+
+Owner -> HalamanTeamSettings: Konfirmasi Hapus Tim
+activate HalamanTeamSettings
+
+HalamanTeamSettings -> Sistem: Validasi Data
+activate Sistem
+
+Sistem -> Database: Cek Data Tim
+activate Database
+
+alt Validasi Berhasil
+    Database -> Sistem: Kembalikan Hasil Validasi (true)
+    Sistem -> Database: Hapus Tim
+    Database -> Sistem: Konfirmasi Penghapusan
+    Sistem -> HalamanTeamSettings: Tampilkan Halaman Search
+    HalamanTeamSettings -> Owner: Tampilkan Halaman Search
+else Validasi Gagal
+    Database -> Sistem: Kembalikan Hasil Validasi (false)
+    Sistem -> HalamanTeamSettings: Tampilkan Halaman Team Settings dengan Peringatan
+    HalamanTeamSettings -> Owner: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanTeamSettings

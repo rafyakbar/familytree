@@ -1,0 +1,37 @@
+title Delete Person
+
+actor "Owner, Administrator, Manager, Developer" as User
+participant HalamanProfile
+participant Sistem
+database Database
+
+User -> HalamanProfile: Tampilkan Halaman Person's Profile dengan Konfirmasi
+activate HalamanProfile
+
+HalamanProfile -> User: Tampilkan Konfirmasi Hapus
+deactivate HalamanProfile
+
+User -> HalamanProfile: Konfirmasi Hapus
+activate HalamanProfile
+
+HalamanProfile -> Sistem: Melakukan Validasi Data
+activate Sistem
+
+Sistem -> Database: Cek Data Person
+activate Database
+
+alt Validasi Berhasil
+    Database -> Sistem: Kembalikan Hasil Validasi (true)
+    Sistem -> Database: Hapus Person
+    Database -> Sistem: Konfirmasi Penghapusan
+    Sistem -> HalamanProfile: Tampilkan Halaman Search
+    HalamanProfile -> User: Tampilkan Halaman Search
+else Validasi Gagal
+    Database -> Sistem: Kembalikan Hasil Validasi (false)
+    Sistem -> HalamanProfile: Tampilkan Halaman Person's Profile dengan Peringatan
+    HalamanProfile -> User: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanProfile

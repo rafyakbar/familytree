@@ -27,7 +27,7 @@ alt Validasi Berhasil
     Sistem -> HalamanPencarian: Tampilkan Halaman Pencarian
     HalamanPencarian -> Pengguna: Tampilkan Halaman Pencarian
 else Validasi Gagal
-    Database --> Sistem: Kembalikan Hasil Validasi (false)
+    Database -> Sistem: Kembalikan Hasil Validasi (false)
     Sistem -> HalamanRegister: Tampilkan Halaman Register dengan Peringatan
     HalamanRegister -> Pengguna: Tampilkan Peringatan
 end

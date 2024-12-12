@@ -23,7 +23,7 @@ activate Database
 
 alt Validasi Berhasil
     Sistem -> Database: Simpan Data Anggota
-    Database --> Sistem: Konfirmasi Penyimpanan
+    Database -> Sistem: Konfirmasi Penyimpanan
     Sistem -> HalamanTeamSettings: Kirim Email Undangan ke Pengguna yang Diundang
     HalamanTeamSettings -> Owner: Tampilkan Halaman Team Settings
 else Validasi Gagal
@@ -41,7 +41,7 @@ activate Sistem
 
 Sistem -> Database: Tambah Anggota ke Tim
 activate Database
-Database --> Sistem: Konfirmasi Penambahan Anggota
+Database -> Sistem: Konfirmasi Penambahan Anggota
 deactivate Database
 
 Sistem -> InvitedUser: Tampilkan Halaman Search

@@ -21,7 +21,7 @@ activate Database
 Sistem -> Sistem: Validasi Data
 alt Validasi Berhasil
     Sistem -> Database: Simpan Data Pengguna
-    Database --> Sistem: Konfirmasi Penyimpanan
+    Database -> Sistem: Konfirmasi Penyimpanan
     Sistem -> HalamanUserProfile: Tampilkan Halaman User Profile
     HalamanUserProfile -> Pengguna: Tampilkan Halaman User Profile
 else Validasi Gagal

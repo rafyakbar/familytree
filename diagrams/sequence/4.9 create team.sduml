@@ -22,7 +22,7 @@ activate Database
 
 alt Validasi Berhasil
     Sistem -> Database: Simpan Data Tim
-    Database --> Sistem: Konfirmasi Penyimpanan
+    Database -> Sistem: Konfirmasi Penyimpanan
     Sistem -> HalamanCreateTeam: Tampilkan Halaman Search
     HalamanCreateTeam -> Pengguna: Tampilkan Halaman Search
 else Validasi Gagal

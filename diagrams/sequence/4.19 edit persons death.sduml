@@ -1,0 +1,35 @@
+title Edit Person's Death
+
+actor "Owner, Administrator, Manager, Editor, Developer" as User
+participant HalamanEditDeath
+participant Sistem
+database Database
+
+User -> HalamanEditDeath: Tampilkan Halaman Edit Person's Death
+activate HalamanEditDeath
+
+HalamanEditDeath -> User: Tampilkan Form Edit Kematian
+deactivate HalamanEditDeath
+
+User -> HalamanEditDeath: Memperbarui Isi dari Form
+activate HalamanEditDeath
+
+HalamanEditDeath -> Sistem: Melakukan Validasi Data
+activate Sistem
+
+Sistem -> Sistem: Cek Data yang Diperbarui
+activate Database
+
+alt Validasi Berhasil
+    Sistem -> Database: Perbarui Data Kematian
+    Database -> Sistem: Konfirmasi Pembaruan
+    Sistem -> HalamanEditDeath: Tampilkan Halaman Edit Person's Death
+    HalamanEditDeath -> User: Tampilkan Halaman Edit Person's Death
+else Validasi Gagal
+    Sistem -> HalamanEditDeath: Tampilkan Halaman Edit Person's Death dengan Peringatan
+    HalamanEditDeath -> User: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanEditDeath

@@ -22,10 +22,10 @@ Sistem -> Database: Verifikasi Email (email)
 activate Database
 
 alt Email Ditemukan
-    Database --> Sistem: Kembalikan Hasil Validasi (true)
+    Database -> Sistem: Kembalikan Hasil Validasi (true)
     Sistem -> Pengguna: Kirim Link Reset Kata Sandi
 else Email Tidak Ditemukan
-    Database --> Sistem: Kembalikan Hasil Validasi (false)
+    Database -> Sistem: Kembalikan Hasil Validasi (false)
     Sistem -> HalamanLupaKataSandi: Tampilkan Halaman Lupa Kata Sandi dengan Peringatan
     HalamanLupaKataSandi -> Pengguna: Tampilkan Peringatan
 end
