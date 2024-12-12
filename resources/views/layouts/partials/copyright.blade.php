@@ -28,7 +28,7 @@
 
         <!-- Bertemu Logo -->
         <a href="https://bertemu.id/" target="_blank" title="Bertemu" aria-label="Visit Bertemu website">
-            <x-svg.Bertemu class="size-11 dark:fill-white hover:fill-primary-300 dark:hover:fill-primary-300" alt="Bertemu Logo" />
+            <x-svg.kreaweb class="size-11 dark:fill-white hover:fill-primary-300 dark:hover:fill-primary-300" alt="Bertemu Logo" />
         </a>
     </div>
 </div>
