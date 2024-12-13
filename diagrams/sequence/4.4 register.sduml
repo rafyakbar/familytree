@@ -1,8 +1,8 @@
 title Diagram Urutan Use Case Register
 
 actor Pengguna
-participant HalamanRegister
-participant HalamanPencarian
+boundary HalamanRegister
+boundary HalamanPencarian
 participant Sistem
 database Database
 

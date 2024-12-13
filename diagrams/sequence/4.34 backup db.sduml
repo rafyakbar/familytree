@@ -1,7 +1,7 @@
 title Backup Database
 
 actor Developer
-participant HalamanBackup
+boundary HalamanBackup
 participant Sistem
 database Database
 

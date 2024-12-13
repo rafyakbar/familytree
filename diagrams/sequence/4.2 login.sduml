@@ -1,8 +1,8 @@
 title Login
 
 actor Pengguna
-participant HalamanLogin
-participant HalamanPencarian
+boundary HalamanLogin
+boundary HalamanPencarian
 participant Sistem
 database Database
 

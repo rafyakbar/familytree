@@ -1,8 +1,9 @@
 title Lupa Kata Sandi
 
 actor Pengguna
-participant HalamanLupaKataSandi
-participant HalamanResetKataSandi
+boundary HalamanLogin
+boundary HalamanLupaKataSandi
+boundary HalamanResetKataSandi
 participant Sistem
 database Database
 

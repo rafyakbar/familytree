@@ -1,7 +1,7 @@
 title Search People
 
 actor "Owner, Administrator, Manager, Editor, Member, Developer" as User
-participant HalamanSearch
+boundary HalamanSearch
 participant Sistem
 database Database
 

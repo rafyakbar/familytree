@@ -1,7 +1,7 @@
 title Manage Role Team Member
 
 actor "Owner, Administrator" as User
-participant HalamanTeamSettings
+boundary HalamanTeamSettings
 participant Sistem
 database Database
 

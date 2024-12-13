@@ -1,7 +1,7 @@
 title Add Person's Relationship
 
 actor "Owner, Administrator, Manager, Editor, Developer" as User
-participant HalamanAddPartner
+boundary HalamanAddPartner
 participant Sistem
 database Database
 

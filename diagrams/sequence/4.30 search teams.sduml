@@ -1,7 +1,7 @@
 title Search Teams
 
 actor Developer
-participant HalamanTeams
+boundary HalamanTeams
 participant Sistem
 database Database
 

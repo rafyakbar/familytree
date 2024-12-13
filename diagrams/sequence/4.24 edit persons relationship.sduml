@@ -1,7 +1,7 @@
 title Edit Person's Relationship
 
 actor "Owner, Administrator, Manager, Editor, Developer" as User
-participant HalamanEditRelationship
+boundary HalamanEditRelationship
 participant Sistem
 database Database
 

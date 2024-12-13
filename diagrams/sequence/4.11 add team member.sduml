@@ -2,7 +2,7 @@ title Add Team Member
 
 actor Owner
 actor "Pengguna yang Diundang" as InvitedUser
-participant HalamanTeamSettings
+boundary HalamanTeamSettings
 participant Sistem
 database Database
 

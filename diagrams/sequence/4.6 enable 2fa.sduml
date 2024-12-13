@@ -1,7 +1,7 @@
 title Enable Two Factor Authentication
 
 actor Pengguna
-participant HalamanUserProfile
+boundary HalamanUserProfile
 participant Sistem
 entity GoogleAuthenticator
 database Database

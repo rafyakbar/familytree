@@ -1,7 +1,7 @@
 title Delete Person
 
 actor "Owner, Administrator, Manager, Developer" as User
-participant HalamanProfile
+boundary HalamanProfile
 participant Sistem
 database Database
 

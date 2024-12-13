@@ -1,7 +1,7 @@
 title Search People (For Developer)
 
 actor Developer
-participant HalamanPeople
+boundary HalamanPeople
 participant Sistem
 database Database
 

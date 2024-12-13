@@ -1,7 +1,7 @@
 title Diagram Urutan Use Case Edit User's Profile
 
 actor Pengguna
-participant HalamanUserProfile
+boundary HalamanUserProfile
 participant Sistem
 database Database
 

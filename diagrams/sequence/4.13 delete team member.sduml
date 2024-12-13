@@ -1,7 +1,7 @@
 title Delete Team Member
 
 actor Owner
-participant HalamanTeamSettings
+boundary HalamanTeamSettings
 participant Sistem
 database Database
 
