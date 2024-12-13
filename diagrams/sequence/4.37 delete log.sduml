@@ -1,0 +1,30 @@
+title Delete Log
+
+actor Developer
+participant HalamanLogViewer
+participant Sistem
+
+Developer -> HalamanLogViewer: Tampilkan Halaman Log Viewer
+activate HalamanLogViewer
+
+HalamanLogViewer -> Developer: Tampilkan Daftar Log
+deactivate HalamanLogViewer
+
+Developer -> HalamanLogViewer: Memilih Log untuk Dihapus
+activate HalamanLogViewer
+
+HalamanLogViewer -> Sistem: Melakukan Validasi Data
+activate Sistem
+
+Sistem -> Sistem: Cek Data Log
+alt Validasi Berhasil
+    Sistem -> Sistem: Hapus Log
+    Sistem -> HalamanLogViewer: Tampilkan Halaman Log Viewer
+    HalamanLogViewer -> Developer: Tampilkan Halaman Log Viewer
+else Validasi Gagal
+    Sistem -> HalamanLogViewer: Tampilkan Halaman Log Viewer dengan Peringatan
+    HalamanLogViewer -> Developer: Tampilkan Peringatan
+end
+
+deactivate Sistem
+deactivate HalamanLogViewer
