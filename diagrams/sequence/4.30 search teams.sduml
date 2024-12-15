@@ -1,0 +1,35 @@
+title Search Teams
+
+actor Developer
+boundary HalamanTeams
+participant Sistem
+database Database
+
+Developer -> HalamanTeams: Tampilkan Halaman Teams
+activate HalamanTeams
+
+HalamanTeams -> Developer: Tampilkan Daftar Tim
+deactivate HalamanTeams
+
+Developer -> HalamanTeams: Memasukkan Keyword atau Filter
+activate HalamanTeams
+
+HalamanTeams -> Sistem: Melakukan Query Data
+activate Sistem
+
+Sistem -> Database: Cari Tim Berdasarkan Keyword/Filter
+activate Database
+
+alt Data Ditemukan
+    Database -> Sistem: Kembalikan Hasil Tim
+    Sistem -> HalamanTeams: Tampilkan Halaman Teams dengan Tim yang Sesuai
+    HalamanTeams -> Developer: Tampilkan Daftar Tim yang Ditemukan
+else Data Tidak Ditemukan
+    Database -> Sistem: Kembalikan Hasil Kosong
+    Sistem -> HalamanTeams: Tampilkan Halaman Teams dengan Informasi Tidak Ada Hasil
+    HalamanTeams -> Developer: Tampilkan Informasi Tidak Ada Hasil
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanTeams

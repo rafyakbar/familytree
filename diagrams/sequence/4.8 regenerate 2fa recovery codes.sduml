@@ -1,0 +1,36 @@
+title Regenerate Two Factor Authentication Recovery Codes
+
+actor Pengguna
+boundary HalamanUserProfile
+participant Sistem
+database Database
+
+Pengguna -> HalamanUserProfile: Tampilkan Halaman User Profile
+activate HalamanUserProfile
+
+HalamanUserProfile -> Pengguna: Tampilkan Form Konfirmasi Kata Sandi
+deactivate HalamanUserProfile
+
+Pengguna -> HalamanUserProfile: Mengisi Kata Sandi
+activate HalamanUserProfile
+
+HalamanUserProfile -> Sistem: Verifikasi Kata Sandi
+activate Sistem
+
+Sistem -> Database: Cek Kata Sandi
+activate Database
+
+alt Verifikasi Berhasil
+    Database -> Sistem: Kembalikan Hasil Validasi (true)
+    Sistem -> Sistem: Regenerasi Kode Pemulihan
+    Sistem -> Sistem: Simpan Kode Pemulihan Baru
+    Sistem -> HalamanUserProfile: Tampilkan Halaman User Profile dengan Kode Pemulihan Baru
+    HalamanUserProfile -> Pengguna: Tampilkan Kode Pemulihan Baru
+else Verifikasi Gagal
+    Database -> Sistem: Kembalikan Hasil Validasi (false)
+    Sistem -> HalamanUserProfile: Tampilkan Halaman User Profile dengan Peringatan
+    HalamanUserProfile -> Pengguna: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem

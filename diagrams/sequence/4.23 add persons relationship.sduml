@@ -1,0 +1,35 @@
+title Add Person's Relationship
+
+actor "Owner, Administrator, Manager, Editor, Developer" as User
+boundary HalamanAddPartner
+participant Sistem
+database Database
+
+User -> HalamanAddPartner: Tampilkan Halaman Add Person's Partner
+activate HalamanAddPartner
+
+HalamanAddPartner -> User: Tampilkan Form Tambah Partner
+deactivate HalamanAddPartner
+
+User -> HalamanAddPartner: Mengisi Form
+activate HalamanAddPartner
+
+HalamanAddPartner -> Sistem: Melakukan Validasi Data
+activate Sistem
+
+Sistem -> Sistem: Cek Data yang Diperbarui
+activate Database
+
+alt Validasi Berhasil
+    Sistem -> Database: Tambah Data Partner
+    Database -> Sistem: Konfirmasi Penambahan
+    Sistem -> HalamanAddPartner: Tampilkan Halaman Person's Profile
+    HalamanAddPartner -> User: Tampilkan Halaman Person's Profile
+else Validasi Gagal
+    Sistem -> HalamanAddPartner: Tampilkan Halaman Add Person's Partner dengan Peringatan
+    HalamanAddPartner -> User: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanAddPartner

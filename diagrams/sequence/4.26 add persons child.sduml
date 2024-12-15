@@ -1,0 +1,35 @@
+title Add Person's Child
+
+actor "Owner, Administrator, Manager, Editor, Developer" as User
+boundary HalamanAddChild
+participant Sistem
+database Database
+
+User -> HalamanAddChild: Tampilkan Halaman Add Person's Child
+activate HalamanAddChild
+
+HalamanAddChild -> User: Tampilkan Form Tambah Anak
+deactivate HalamanAddChild
+
+User -> HalamanAddChild: Mengisi Form
+activate HalamanAddChild
+
+HalamanAddChild -> Sistem: Melakukan Validasi Data
+activate Sistem
+
+Sistem -> Sistem: Cek Data yang Diperbarui
+activate Database
+
+alt Validasi Berhasil
+    Sistem -> Database: Tambah Data Anak
+    Database -> Sistem: Konfirmasi Penambahan
+    Sistem -> HalamanAddChild: Tampilkan Halaman Person's Profile
+    HalamanAddChild -> User: Tampilkan Halaman Person's Profile
+else Validasi Gagal
+    Sistem -> HalamanAddChild: Tampilkan Halaman Add Person's Child dengan Peringatan
+    HalamanAddChild -> User: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanAddChild

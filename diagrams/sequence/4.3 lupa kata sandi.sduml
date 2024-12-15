@@ -1,0 +1,55 @@
+title Lupa Kata Sandi
+
+actor Pengguna
+boundary HalamanLogin
+boundary HalamanLupaKataSandi
+boundary HalamanResetKataSandi
+participant Sistem
+database Database
+
+Pengguna -> HalamanLupaKataSandi: Tampilkan Halaman Lupa Kata Sandi
+activate HalamanLupaKataSandi
+
+HalamanLupaKataSandi -> Pengguna: Menampilkan Form Lupa Kata Sandi
+deactivate HalamanLupaKataSandi
+
+Pengguna -> HalamanLupaKataSandi: Masukkan Email
+activate HalamanLupaKataSandi
+
+HalamanLupaKataSandi -> Sistem: Kirim Permintaan Reset Kata Sandi (email)
+activate Sistem
+
+Sistem -> Database: Verifikasi Email (email)
+activate Database
+
+alt Email Ditemukan
+    Database -> Sistem: Kembalikan Hasil Validasi (true)
+    Sistem -> Pengguna: Kirim Link Reset Kata Sandi
+else Email Tidak Ditemukan
+    Database -> Sistem: Kembalikan Hasil Validasi (false)
+    Sistem -> HalamanLupaKataSandi: Tampilkan Halaman Lupa Kata Sandi dengan Peringatan
+    HalamanLupaKataSandi -> Pengguna: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem
+
+Pengguna -> HalamanResetKataSandi: Buka Email dan Akses Link
+activate HalamanResetKataSandi
+
+HalamanResetKataSandi -> Pengguna: Tampilkan Form Reset Kata Sandi
+deactivate HalamanResetKataSandi
+
+Pengguna -> HalamanResetKataSandi: Masukkan Kata Sandi Baru
+activate HalamanResetKataSandi
+
+HalamanResetKataSandi -> Sistem: Ubah Kata Sandi Pengguna (kata sandi baru)
+activate Sistem
+
+activate Database
+Sistem -> Database: Simpan Kata Sandi Baru
+deactivate Database
+
+Sistem -> HalamanLogin: Tampilkan Halaman Login
+HalamanLogin -> Pengguna: Tampilkan Halaman Login
+deactivate Sistem

@@ -1,0 +1,35 @@
+title Add Person's Files
+
+actor "Owner, Administrator, Manager, Editor, Developer" as User
+boundary HalamanEditFile
+participant Sistem
+database Database
+
+User -> HalamanEditFile: Tampilkan Halaman Edit Person's File
+activate HalamanEditFile
+
+HalamanEditFile -> User: Tampilkan Form Tambah File
+deactivate HalamanEditFile
+
+User -> HalamanEditFile: Mengisi Form
+activate HalamanEditFile
+
+HalamanEditFile -> Sistem: Melakukan Validasi Data
+activate Sistem
+
+Sistem -> Sistem: Cek Data yang Diperbarui
+activate Database
+
+alt Validasi Berhasil
+    Sistem -> Database: Tambah File
+    Database -> Sistem: Konfirmasi Penambahan
+    Sistem -> HalamanEditFile: Tampilkan Halaman Edit Person's File
+    HalamanEditFile -> User: Tampilkan Halaman Edit Person's File
+else Validasi Gagal
+    Sistem -> HalamanEditFile: Tampilkan Halaman Edit Person's File dengan Peringatan
+    HalamanEditFile -> User: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanEditFile

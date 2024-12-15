@@ -1,0 +1,35 @@
+title Search People
+
+actor "Owner, Administrator, Manager, Editor, Member, Developer" as User
+boundary HalamanSearch
+participant Sistem
+database Database
+
+User -> HalamanSearch: Tampilkan Halaman Search
+activate HalamanSearch
+
+HalamanSearch -> User: Tampilkan Form Pencarian
+deactivate HalamanSearch
+
+User -> HalamanSearch: Memasukkan Keyword
+activate HalamanSearch
+
+HalamanSearch -> Sistem: Melakukan Query Data
+activate Sistem
+
+Sistem -> Database: Cek Data People
+activate Database
+
+alt Data Ditemukan
+    Database -> Sistem: Kembalikan Hasil Pencarian
+    Sistem -> HalamanSearch: Tampilkan Halaman Search dengan People yang Sesuai
+    HalamanSearch -> User: Tampilkan Hasil Pencarian
+else Data Tidak Ditemukan
+    Database -> Sistem: Kembalikan Hasil Pencarian (kosong)
+    Sistem -> HalamanSearch: Tampilkan Halaman Search dengan Informasi Tidak Ada Hasil
+    HalamanSearch -> User: Tampilkan Informasi Tidak Ada Hasil
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanSearch

@@ -1,0 +1,35 @@
+title Edit Person's Contact
+
+actor "Owner, Administrator, Manager, Editor, Developer" as User
+boundary HalamanEditContact
+participant Sistem
+database Database
+
+User -> HalamanEditContact: Tampilkan Halaman Edit Person's Contact
+activate HalamanEditContact
+
+HalamanEditContact -> User: Tampilkan Form Edit Kontak
+deactivate HalamanEditContact
+
+User -> HalamanEditContact: Memperbarui Isi dari Form
+activate HalamanEditContact
+
+HalamanEditContact -> Sistem: Melakukan Validasi Data
+activate Sistem
+
+Sistem -> Sistem: Cek Data yang Diperbarui
+activate Database
+
+alt Validasi Berhasil
+    Sistem -> Database: Perbarui Kontak
+    Database -> Sistem: Konfirmasi Pembaruan
+    Sistem -> HalamanEditContact: Tampilkan Halaman Edit Person's Contact
+    HalamanEditContact -> User: Tampilkan Halaman Edit Person's Contact
+else Validasi Gagal
+    Sistem -> HalamanEditContact: Tampilkan Halaman Edit Person's Contact dengan Peringatan
+    HalamanEditContact -> User: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanEditContact

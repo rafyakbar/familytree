@@ -1,0 +1,35 @@
+title Add Person's Photos
+
+actor "Owner, Administrator, Manager, Editor, Developer" as User
+boundary HalamanEditPhotos
+participant Sistem
+database Database
+
+User -> HalamanEditPhotos: Tampilkan Halaman Edit Person's Photos
+activate HalamanEditPhotos
+
+HalamanEditPhotos -> User: Tampilkan Form Tambah Foto
+deactivate HalamanEditPhotos
+
+User -> HalamanEditPhotos: Menginputkan Satu atau Beberapa Foto
+activate HalamanEditPhotos
+
+HalamanEditPhotos -> Sistem: Melakukan Validasi Data
+activate Sistem
+
+Sistem -> Sistem: Cek Data Foto yang Diperbarui
+activate Database
+
+alt Validasi Berhasil
+    Sistem -> Database: Simpan Foto
+    Database -> Sistem: Konfirmasi Penyimpanan
+    Sistem -> HalamanEditPhotos: Tampilkan Halaman Edit Person's Photos
+    HalamanEditPhotos -> User: Tampilkan Halaman Edit Person's Photos
+else Validasi Gagal
+    Sistem -> HalamanEditPhotos: Tampilkan Halaman Edit Person's Photos dengan Peringatan
+    HalamanEditPhotos -> User: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanEditPhotos

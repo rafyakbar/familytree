@@ -1,0 +1,35 @@
+title Edit Person's Family
+
+actor "Owner, Administrator, Manager, Editor, Developer" as User
+boundary HalamanEditFamily
+participant Sistem
+database Database
+
+User -> HalamanEditFamily: Tampilkan Halaman Edit Person's Family
+activate HalamanEditFamily
+
+HalamanEditFamily -> User: Tampilkan Form Edit Keluarga
+deactivate HalamanEditFamily
+
+User -> HalamanEditFamily: Memperbarui Isi dari Form
+activate HalamanEditFamily
+
+HalamanEditFamily -> Sistem: Melakukan Validasi Data
+activate Sistem
+
+Sistem -> Sistem: Cek Data yang Diperbarui
+activate Database
+
+alt Validasi Berhasil
+    Sistem -> Database: Perbarui Data Keluarga
+    Database -> Sistem: Konfirmasi Pembaruan
+    Sistem -> HalamanEditFamily: Tampilkan Halaman Person's Profile
+    HalamanEditFamily -> User: Tampilkan Halaman Person's Profile
+else Validasi Gagal
+    Sistem -> HalamanEditFamily: Tampilkan Halaman Edit Person's Family dengan Peringatan
+    HalamanEditFamily -> User: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanEditFamily

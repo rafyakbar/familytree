@@ -1,0 +1,43 @@
+title Manage Role Team Member
+
+actor "Owner, Administrator" as User
+boundary HalamanTeamSettings
+participant Sistem
+database Database
+
+User -> HalamanTeamSettings: Tampilkan Halaman Team Settings
+activate HalamanTeamSettings
+
+HalamanTeamSettings -> User: Tampilkan Daftar Anggota
+deactivate HalamanTeamSettings
+
+User -> HalamanTeamSettings: Memilih Member
+activate HalamanTeamSettings
+
+HalamanTeamSettings -> User: Tampilkan Pilihan Hak Akses
+deactivate HalamanTeamSettings
+
+User -> HalamanTeamSettings: Memilih Hak Akses
+activate HalamanTeamSettings
+
+HalamanTeamSettings -> Sistem: Validasi Data
+activate Sistem
+
+Sistem -> Database: Cek Data Anggota
+activate Database
+
+alt Validasi Berhasil
+    Database -> Sistem: Kembalikan Hasil Validasi (true)
+    Sistem -> Database: Perbarui Hak Akses Member
+    Database -> Sistem: Konfirmasi Pembaruan
+    Sistem -> HalamanTeamSettings: Tampilkan Halaman Team Settings
+    HalamanTeamSettings -> User: Tampilkan Halaman Team Settings
+else Validasi Gagal
+    Database -> Sistem: Kembalikan Hasil Validasi (false)
+    Sistem -> HalamanTeamSettings: Tampilkan Halaman Team Settings dengan Peringatan
+    HalamanTeamSettings -> User: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanTeamSettings

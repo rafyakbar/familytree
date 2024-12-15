@@ -1,0 +1,37 @@
+title Delete Person's Photo
+
+actor "Owner, Administrator, Manager, Editor, Developer" as User
+boundary HalamanEditPhotos
+participant Sistem
+database Database
+
+User -> HalamanEditPhotos: Tampilkan Halaman Edit Person's Photos
+activate HalamanEditPhotos
+
+HalamanEditPhotos -> User: Tampilkan Daftar Foto
+deactivate HalamanEditPhotos
+
+User -> HalamanEditPhotos: Memilih Gambar untuk Dihapus
+activate HalamanEditPhotos
+
+HalamanEditPhotos -> Sistem: Melakukan Validasi Data
+activate Sistem
+
+Sistem -> Database: Cek Data Foto
+activate Database
+
+alt Validasi Berhasil
+    Database -> Sistem: Kembalikan Hasil Validasi (true)
+    Sistem -> Database: Hapus Foto
+    Database -> Sistem: Konfirmasi Penghapusan
+    Sistem -> HalamanEditPhotos: Tampilkan Halaman Edit Person's Photos
+    HalamanEditPhotos -> User: Tampilkan Halaman Edit Person's Photos
+else Validasi Gagal
+    Database -> Sistem: Kembalikan Hasil Validasi (false)
+    Sistem -> HalamanEditPhotos: Tampilkan Halaman Edit Person's Photos dengan Peringatan
+    HalamanEditPhotos -> User: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanEditPhotos

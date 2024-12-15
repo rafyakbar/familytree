@@ -1,0 +1,29 @@
+title Search in Log
+
+actor Developer
+boundary HalamanLogViewer
+participant Sistem
+
+Developer -> HalamanLogViewer: Tampilkan Halaman Log Viewer
+activate HalamanLogViewer
+
+HalamanLogViewer -> Developer: Tampilkan Daftar Log
+deactivate HalamanLogViewer
+
+Developer -> HalamanLogViewer: Memasukkan Keyword
+activate HalamanLogViewer
+
+HalamanLogViewer -> Sistem: Melakukan Filter Data
+activate Sistem
+
+Sistem -> Sistem: Cari Log Berdasarkan Keyword
+alt Data Ditemukan
+    Sistem -> HalamanLogViewer: Tampilkan Halaman Log Viewer dengan Log yang Sesuai
+    HalamanLogViewer -> Developer: Tampilkan Daftar Log yang Ditemukan
+else Data Tidak Ditemukan
+    Sistem -> HalamanLogViewer: Tampilkan Halaman Log Viewer dengan Peringatan
+    HalamanLogViewer -> Developer: Tampilkan Peringatan
+end
+
+deactivate Sistem
+deactivate HalamanLogViewer

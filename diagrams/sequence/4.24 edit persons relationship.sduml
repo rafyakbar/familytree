@@ -1,0 +1,35 @@
+title Edit Person's Relationship
+
+actor "Owner, Administrator, Manager, Editor, Developer" as User
+boundary HalamanEditRelationship
+participant Sistem
+database Database
+
+User -> HalamanEditRelationship: Tampilkan Halaman Edit Person's Relationship
+activate HalamanEditRelationship
+
+HalamanEditRelationship -> User: Tampilkan Form Edit Hubungan
+deactivate HalamanEditRelationship
+
+User -> HalamanEditRelationship: Memperbarui Isi dari Form
+activate HalamanEditRelationship
+
+HalamanEditRelationship -> Sistem: Melakukan Validasi Data
+activate Sistem
+
+Sistem -> Sistem: Cek Data yang Diperbarui
+activate Database
+
+alt Validasi Berhasil
+    Sistem -> Database: Perbarui Data Hubungan
+    Database -> Sistem: Konfirmasi Pembaruan
+    Sistem -> HalamanEditRelationship: Tampilkan Halaman Person's Profile
+    HalamanEditRelationship -> User: Tampilkan Halaman Person's Profile
+else Validasi Gagal
+    Sistem -> HalamanEditRelationship: Tampilkan Halaman Edit Person's Relationship dengan Peringatan
+    HalamanEditRelationship -> User: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanEditRelationship

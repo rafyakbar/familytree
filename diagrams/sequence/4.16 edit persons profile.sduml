@@ -1,0 +1,35 @@
+title Edit Person's Profile
+
+actor "Owner, Administrator, Manager, Editor, Developer" as User
+boundary HalamanEditProfile
+participant Sistem
+database Database
+
+User -> HalamanEditProfile: Tampilkan Halaman Edit Person's Profile
+activate HalamanEditProfile
+
+HalamanEditProfile -> User: Tampilkan Form Edit
+deactivate HalamanEditProfile
+
+User -> HalamanEditProfile: Memperbarui Isi dari Form
+activate HalamanEditProfile
+
+HalamanEditProfile -> Sistem: Melakukan Validasi Data
+activate Sistem
+
+Sistem -> Sistem: Cek Data yang Diperbarui
+activate Database
+
+alt Validasi Berhasil
+    Sistem -> Database: Perbarui Profil
+    Database -> Sistem: Konfirmasi Pembaruan
+    Sistem -> HalamanEditProfile: Tampilkan Halaman Edit Person's Profile
+    HalamanEditProfile -> User: Tampilkan Halaman Edit Person's Profile
+else Validasi Gagal
+    Sistem -> HalamanEditProfile: Tampilkan Halaman Edit Person's Profile dengan Peringatan
+    HalamanEditProfile -> User: Tampilkan Peringatan
+end
+
+deactivate Database
+deactivate Sistem
+deactivate HalamanEditProfile

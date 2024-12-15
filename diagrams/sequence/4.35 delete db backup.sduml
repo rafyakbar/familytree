@@ -1,0 +1,30 @@
+title Delete Database Backup
+
+actor Developer
+boundary HalamanBackup
+participant Sistem
+
+Developer -> HalamanBackup: Tampilkan Halaman Backup
+activate HalamanBackup
+
+HalamanBackup -> Developer: Tampilkan Daftar Backup
+deactivate HalamanBackup
+
+Developer -> HalamanBackup: Memilih Backup untuk Dihapus
+activate HalamanBackup
+
+HalamanBackup -> Sistem: Melakukan Validasi Data
+activate Sistem
+
+Sistem -> Sistem: Cek Data Backup
+alt Validasi Berhasil
+    Sistem -> Sistem: Hapus Backup
+    Sistem -> HalamanBackup: Tampilkan Halaman Backup
+    HalamanBackup -> Developer: Tampilkan Halaman Backup
+else Validasi Gagal
+    Sistem -> HalamanBackup: Tampilkan Halaman Backup dengan Peringatan
+    HalamanBackup -> Developer: Tampilkan Peringatan
+end
+
+deactivate Sistem
+deactivate HalamanBackup
