@@ -153,13 +153,13 @@
                 </p>
             </div>
 
-            <div>
+            {{--<div>
                 <x-hr.narrow class="w-full h-1 my-1 bg-gray-100 border-0 rounded max-md:mx-auto dark:bg-gray-700" />
 
                 <p>
                     <x-nav-link-responsive href="{{ route('test') }}" :active="request()->routeIs('test')">Test</x-nav-link-responsive>
                 </p>
-            </div>
+            </div>--}}
         @else
             {{-- guest --}}
             <div class="text-warning-500 dark:text-warning-200">{{ __('auth.guest') }} ...</div>
